@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriGo | Federated Agro-Advisory & Soil Intelligence DPG</title>
+  <meta name="description" content="Interoperable Digital Public Good for Federated Agro-Advisories, Soil Intelligence & Crop Diagnostics powered by GCP Vertex AI & Earth Engine.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header & Navigation Bar -->
+  <header class="header">
+    <a href="#" class="brand">
+      <div class="brand-icon">🌱</div>
+      <div>
+        <span class="brand-title">AgriGo</span>
+        <span class="dpg-badge">DPG Verified</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item active" data-tab="dash-tab" data-i18n="dashTab"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+      <li class="nav-item" data-tab="soil-tab" data-i18n="soilTab"><i class="fa-solid fa-flask"></i> Soil OCR</li>
+      <li class="nav-item" data-tab="sat-tab" data-i18n="satTab"><i class="fa-solid fa-satellite"></i> Satellite GEE</li>
+      <li class="nav-item" data-tab="diag-tab" data-i18n="diagTab"><i class="fa-solid fa-leaf"></i> Leaf Scanner</li>
+      <li class="nav-item" data-tab="api-tab" data-i18n="apiTab"><i class="fa-solid fa-code"></i> Beckn DPG API</li>
+    </ul>
+
+    <div class="header-controls">
+      <button class="lang-btn" id="langToggleBtn">
+        <i class="fa-solid fa-globe"></i> தமிழ்
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Banner -->
+    <div class="hero-banner glass-panel">
+      <div>
+        <h1 class="hero-title" data-i18n="heroTitle">AgriGo: Interoperable Agro-Advisory Public Good</h1>
+        <p class="hero-sub" data-i18n="heroSub">Federated Soil OCR, Sentinel-2 Remote Sensing, Leaf Pathology & Vernacular Voice Guidance powered by GCP Vertex AI.</p>
+      </div>
+      <div class="weather-chip">
+        <div class="weather-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+        <div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="weatherTitle">Coimbatore Weather</div>
+          <div class="weather-temp" id="weatherTemp">28°C</div>
+          <div style="font-size: 0.8rem; color: var(--primary);" id="weatherWind">Wind: 14 km/h</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 1: DASHBOARD -->
+    <div class="tab-content active" id="dash-tab">
+      
+      <!-- Audio Advisory Strip -->
+      <div class="audio-player-card">
+        <div class="audio-info">
+          <button class="audio-play-btn" id="playAudioBtn"><i class="fa-solid fa-play"></i></button>
+          <div>
+            <h4 style="font-family: var(--font-heading); margin-bottom: 2px;">Vernacular Advisory Speech Synthesis</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Listen to real-time Tamil & English soil nutrition & weather advice</p>
+          </div>
+        </div>
+        <span class="dpg-badge"><i class="fa-solid fa-volume-high"></i> GCP TTS</span>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass-panel stat-card">
+          <div class="stat-label">Active Soil Profile</div>
+          <div class="stat-value">pH 6.8</div>
+          <div class="stat-status status-normal"><i class="fa-solid fa-circle-check"></i> Optimal Neutral Soil</div>
+        </div>
+
+        <div class="glass-panel stat-card">
+          <div class="stat-label">Sentinel-2 NDVI Health</div>
+          <div class="stat-value">0.74</div>
+          <div class="stat-status status-warning"><i class="fa-solid fa-triangle-exclamation"></i> Moderate N Deficit</div>
+        </div>
+
+        <div class="glass-panel stat-card">
+          <div class="stat-label">Disease Risk Index</div>
+          <div class="stat-value" style="color: var(--accent);">Low Risk</div>
+          <div class="stat-status status-normal"><i class="fa-solid fa-shield-halved"></i> 98.4% Leaf Health Score</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="glass-panel">
+          <div class="card-header">
+            <span class="card-title"><i class="fa-solid fa-bolt" style="color:var(--primary);"></i> Quick Action Center</span>
+          </div>
+          <div class="card-body grid-2">
+            <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\'soil-tab\']').click()"><i class="fa-solid fa-camera"></i> Scan Soil Card</button>
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'sat-tab\']').click()"><i class="fa-solid fa-map-location-dot"></i> View Satellite Map</button>
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'diag-tab\']').click()"><i class="fa-solid fa-bug"></i> Scan Leaf Disease</button>
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'api-tab\']').click()"><i class="fa-solid fa-network-wired"></i> Open DPG Specs</button>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="card-header">
+            <span class="card-title"><i class="fa-solid fa-triangle-exclamation" style="color:var(--accent);"></i> Agro-Meteorological Alerts</span>
+          </div>
+          <div class="card-body">
+            <div style="padding: 0.8rem; background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--accent); border-radius: 4px; margin-bottom: 0.8rem; font-size: 0.9rem;">
+              <strong>🌧️ Spray Window Warning:</strong> Moderate precipitation expected in 36 hours. Complete foliar liquid fertilizer application before tomorrow evening.
+            </div>
+            <div style="padding: 0.8rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--primary); border-radius: 4px; font-size: 0.9rem;">
+              <strong>💧 Moisture Optimal:</strong> Sentinel-2 NDWI indicates root-zone moisture is sufficient for tiller initiation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SOIL HEALTH OCR & ADVISORY -->
+    <div class="tab-content" id="soil-tab">
+      <div class="grid-2">
+        <div class="glass-panel">
+          <div class="card-header">
+            <span class="card-title" data-i18n="soilCardTitle"><i class="fa-solid fa-file-invoice"></i> Soil Health Translation Engine</span>
+          </div>
+          <div class="card-body">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" data-i18n="soilCardDesc">
+              Upload physical Soil Health Card or run sample card to extract NPK metrics via Gemini Vision OCR.
+            </p>
+
+            <div class="upload-dropzone scanner-box" id="soilOcrBox">
+              <div class="scan-bar"></div>
+              <img src="assets/soil_card.jpg" class="upload-preview" alt="Soil Card Sample">
+              <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Sample Indian Soil Health Card (Jaipur/Tamil Nadu SAU format) Loaded
+              </p>
+            </div>
+
+            <button class="btn btn-primary" id="runOcrBtn" style="width: 100%; margin-top: 1.25rem; justify-content: center;">
+              <i class="fa-solid fa-microchip"></i> <span data-i18n="runOcrBtn">Run Vertex AI OCR Scan</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="card-header">
+            <span class="card-title"><i class="fa-solid fa-square-poll-vertical"></i> Parsed Chemistry & Fertilizer Split</span>
+          </div>
+          <div class="card-body">
+            <div class="input-group">
+              <label class="input-label">Target Crop Variety Selection</label>
+              <select class="select-field" id="cropSelect">
+                <option value="paddy">Paddy (Rice ADT-53 / Co-51)</option>
+                <option value="maize">Maize (Hybrid Co6)</option>
+                <option value="cotton">Cotton (MCU-5 Long Staple)</option>
+              </select>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 1rem;">
+              <div class="stat-card">
+                <div class="stat-label">Soil pH Level</div>
+                <div class="stat-value" id="phVal">6.8</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Nitrogen (N)</div>
+                <div class="stat-value" id="nVal">180.0 kg/ha</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Phosphorus (P)</div>
+                <div class="stat-value" id="pVal">22.5 kg/ha</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Potassium (K)</div>
+                <div class="stat-value" id="kVal">210.0 kg/ha</div>
+              </div>
+            </div>
+
+            <h4 style="font-family: var(--font-heading); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1rem;">
+              Recommended Split Application Matrix (Per Acre)
+            </h4>
+
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Growth Stage</th>
+                  <th>Urea</th>
+                  <th>DAP</th>
+                  <th>MOP</th>
+                  <th>Bio / Organic</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTableBody">
+                <tr>
+                  <td><strong>Basal Stage</strong></td>
+                  <td>30 kg</td>
+                  <td>55 kg</td>
+                  <td>20 kg</td>
+                  <td>Neem Cake 100 kg</td>
+                </tr>
+                <tr>
+                  <td><strong>Active Tillering</strong></td>
+                  <td>45 kg</td>
+                  <td>0 kg</td>
+                  <td>15 kg</td>
+                  <td>Azospirillum 2 kg</td>
+                </tr>
+                <tr>
+                  <td><strong>Panicle Initiation</strong></td>
+                  <td>30 kg</td>
+                  <td>0 kg</td>
+                  <td>15 kg</td>
+                  <td>Panchagavya Spray</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SATELLITE GEE REMOTE SENSING -->
+    <div class="tab-content" id="sat-tab">
+      <div class="glass-panel">
+        <div class="card-header">
+          <span class="card-title" data-i18n="satTitle"><i class="fa-solid fa-earth-asia"></i> Sentinel-2 NDVI Canopy Analytics</span>
+          <span class="dpg-badge"><i class="fa-solid fa-satellite-dish"></i> Google Earth Engine</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" data-i18n="satSub">
+            Real-time Google Earth Engine Vegetation & Water Index for Plot ID: TN-CBE-2026-0891
+          </p>
+
+          <div class="map-canvas-container">
+            <canvas id="ndviCanvas"></canvas>
+            <div class="map-canvas-overlay">
+              <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;"><i class="fa-solid fa-layer-group"></i> NDVI Layer</button>
+              <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;"><i class="fa-solid fa-droplet"></i> NDWI Water Index</button>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top: 1.5rem;">
+            <div class="stat-card">
+              <div class="stat-label">Canopy Cover Density</div>
+              <div class="stat-value">84.2%</div>
+              <div class="stat-status status-normal"><i class="fa-solid fa-up-long"></i> +4.1% vs last week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Water Stress Index (NDWI)</div>
+              <div class="stat-value">0.42</div>
+              <div class="stat-status status-normal"><i class="fa-solid fa-circle-check"></i> Adequate Hydration</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Chlorophyll Absorption</div>
+              <div class="stat-value">High</div>
+              <div class="stat-status status-warning"><i class="fa-solid fa-triangle-exclamation"></i> East Sector Mild Deficit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: LEAF PATHOLOGY SCANNER -->
+    <div class="tab-content" id="diag-tab">
+      <div class="grid-2">
+        <div class="glass-panel">
+          <div class="card-header">
+            <span class="card-title" data-i18n="diagTitle"><i class="fa-solid fa-virus"></i> Multimodal Crop Pathology Classifier</span>
+          </div>
+          <div class="card-body">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" data-i18n="diagSub">
+              Vertex AI + MobileNetV3 Leaf Disease Scanner
+            </p>
+
+            <div class="upload-dropzone scanner-box" id="diagScannerBox">
+              <div class="scan-bar"></div>
+              <img src="assets/diseased_leaf.jpg" class="upload-preview" alt="Diseased Leaf Sample">
+              <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-muted);">
+                <i class="fa-solid fa-camera"></i> Paddy Leaf Sample (Brown Spot / Helminthosporium)
+              </p>
+            </div>
+
+            <button class="btn btn-primary" id="runDiagBtn" style="width: 100%; margin-top: 1.25rem; justify-content: center;">
+              <i class="fa-solid fa-magnifying-glass-chart"></i> <span data-i18n="runDiagBtn">Analyze Leaf Pathology</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-panel" id="diagResultBox">
+          <div class="card-header">
+            <span class="card-title"><i class="fa-solid fa-stethoscope"></i> Diagnostic Results & Action Plan</span>
+            <span class="confidence-gauge"><i class="fa-solid fa-bullseye"></i> 98.4% Confidence</span>
+          </div>
+          <div class="card-body">
+            <h3 style="font-family: var(--font-heading); color: var(--danger); margin-bottom: 0.3rem;">
+              Rice Brown Spot Disease (Helminthosporium oryzae)
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+              Detected multiple dark brown oval lesions with yellow halos on leaf surface. Common in nitrogen-deficient soils.
+            </p>
+
+            <div style="margin-bottom: 1.25rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;" data-i18n="organicTitle">
+                🌱 Organic / Regenerative Remedy
+              </h4>
+              <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-main);">
+                <li>Foliar spray of <strong>Pseudomonas fluorescens</strong> @ 10g/litre of water.</li>
+                <li>Apply <strong>Neem oil formulation (3%)</strong> during morning hours.</li>
+                <li>Incorporate compost to improve soil organic carbon above 0.6%.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--secondary); margin-bottom: 0.5rem;" data-i18n="chemicalTitle">
+                🧪 Targeted Chemical Treatment
+              </h4>
+              <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-main);">
+                <li>Spray <strong>Mancozeb 75% WP</strong> @ 2g/litre or <strong>Tebuconazole 25.9% EC</strong> @ 1ml/litre.</li>
+                <li>Maintain 14-day pre-harvest safety interval.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: BECKN DPG API HUB -->
+    <div class="tab-content" id="api-tab">
+      <div class="glass-panel">
+        <div class="card-header">
+          <span class="card-title"><i class="fa-solid fa-network-wired"></i> Interoperable DPG / Beckn API Specification</span>
+          <button class="btn btn-secondary" id="copyApiBtn"><i class="fa-solid fa-copy"></i> <span data-i18n="copyApiBtn">Copy Beckn Payload</span></button>
+        </div>
+        <div class="card-body">
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Standardized OpenAPI 3.0 / JSON-LD schemas enabling State Agricultural Universities (SAUs) and State Departments to query federated agro-advisories.
+          </p>
+
+          <pre class="json-viewer" id="jsonCodeBlock">{
+  "@context": "https://agri-go.org/schemas/v1/context.jsonld",
+  "protocol": "Beckn-Agri-1.0",
+  "action": "on_search_advisory",
+  "message": {
+    "plot_id": "TN-CBE-2026-0891",
+    "location": { "lat": 11.0168, "lon": 76.9558 },
+    "soil_chemistry": {
+      "ph": 6.8,
+      "nitrogen_kg_ha": 180.0,
+      "phosphorus_kg_ha": 22.5,
+      "potassium_kg_ha": 210.0,
+      "organic_carbon_pct": 0.45
+    },
+    "sentinel_remote_sensing": {
+      "ndvi_score": 0.74,
+      "ndwi_score": 0.42,
+      "nitrogen_stress": true
+    },
+    "advisory_output": {
+      "crop_target": "Paddy_ADT53",
+      "disease_detected": "Rice_Brown_Spot",
+      "confidence": 0.984,
+      "recommended_treatments": {
+        "organic": "Pseudomonas fluorescens 10g/L",
+        "chemical": "Mancozeb 75% WP 2g/L"
+      }
+    }
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>AgriGo Digital Public Good (DPG) • Licensed under Apache 2.0 • Powered by GCP Vertex AI & Earth Engine</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
