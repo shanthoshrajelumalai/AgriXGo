@@ -130,8 +130,8 @@ AgriXGo/
 
 ### 1. Clone & Set Up Frontend
 ```bash
-git clone https://github.com/YOUR_USERNAME/agrixgo.git
-cd agrixgo
+git clone https://github.com/shanthoshrajelumalai/AgriXGo.git
+cd AgriXGo
 flutter pub get
 ```
 
