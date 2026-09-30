@@ -1,4 +1,4 @@
-# AgriGo
+# AgriXGo
 
 > **An Interoperable Digital Public Good (DPG) for Federated Agro-Advisories, Soil Intelligence & Crop Diagnostics**
 
@@ -6,7 +6,7 @@
 
 ## 📌 Overview
 
-**AgriGo** bridges the critical gap between complex agricultural datasets and smallholder farmers. Built on top of emerging Digital Public Infrastructure (DPI) principles, AgriGo synthesizes ground-level soil testing records, Sentinel-2 satellite remote sensing, local meteorological forecasts, and multimodal computer vision into actionable, vernacular guidance for farmers.
+**AgriXGo** bridges the critical gap between complex agricultural datasets and smallholder farmers. Built on top of emerging Digital Public Infrastructure (DPI) principles, AgriXGo synthesizes ground-level soil testing records, Sentinel-2 satellite remote sensing, local meteorological forecasts, and multimodal computer vision into actionable, vernacular guidance for farmers.
 
 Powered end-to-end by **Google Cloud Platform (GCP)** and designed around open-standard API architectures (OpenAPI 3.0 / Beckn Protocol), the platform enables State Agricultural Universities (SAUs) and state departments to federate agronomic rulesets and share intelligence without proprietary vendor lock-in.
 
@@ -90,7 +90,7 @@ Powered end-to-end by **Google Cloud Platform (GCP)** and designed around open-s
 ## 📁 Repository Structure
 
 ```bash
-AgriGo/
+AgriXGo/
 ├── android/                        # Native Android wrapper configuration
 ├── lib/
 │   ├── bloc/                       # State management (Soil, Weather, Vision, Advisory)
@@ -130,8 +130,8 @@ AgriGo/
 
 ### 1. Clone & Set Up Frontend
 ```bash
-git clone https://github.com/your-org/AgriGo.git
-cd AgriGo
+git clone https://github.com/YOUR_USERNAME/agrixgo.git
+cd agrixgo
 flutter pub get
 ```
 
@@ -150,9 +150,9 @@ gcloud services enable \
 ### 3. Deploy Backend to Google Cloud Run
 ```bash
 cd backend
-gcloud builds submit --tag gcr.io/[PROJECT-ID]/AgriGo-backend
-gcloud run deploy AgriGo-backend \
-    --image gcr.io/[PROJECT-ID]/AgriGo-backend \
+gcloud builds submit --tag gcr.io/[PROJECT-ID]/agrixgo-backend
+gcloud run deploy agrixgo-backend \
+    --image gcr.io/[PROJECT-ID]/agrixgo-backend \
     --platform managed \
     --region asia-south1 \
     --allow-unauthenticated
@@ -167,10 +167,10 @@ flutter run
 
 ## 🌐 Open Interoperability & DPG API Spec
 
-AgriGo exposes open REST/JSON-LD interfaces for cross-state data federation via Google Cloud Run:
+AgriXGo exposes open REST/JSON-LD interfaces for cross-state data federation via Google Cloud Run:
 
 ```http
-POST https://AgriGo-backend-[hash]-el.a.run.app/api/v1/advisory/generate
+POST https://agrixgo-backend-[hash]-el.a.run.app/api/v1/advisory/generate
 Content-Type: application/json
 
 {

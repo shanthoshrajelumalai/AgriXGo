@@ -1,9 +1,9 @@
-/* AgriGo Web Application Logic & Interoperability Hub */
+/* AgriXGo Web Application Logic & Interoperability Hub */
 
 // Translations dictionary (English / Tamil)
 const i18n = {
   en: {
-    heroTitle: "AgriGo: Interoperable Agro-Advisory Public Good",
+    heroTitle: "AgriXGo: Interoperable Agro-Advisory Public Good",
     heroSub: "Federated Soil OCR, Sentinel-2 Remote Sensing, Leaf Pathology & Vernacular Voice Guidance powered by GCP Vertex AI.",
     dashTab: "Dashboard",
     soilTab: "Soil OCR & Advisory",
